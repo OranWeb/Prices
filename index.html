@@ -1,0 +1,611 @@
+
+<!DOCTYPE html><html lang='en' class=''>
+<head><script src='//static.codepen.io/assets/editor/live/console_runner-1df7d3399bdc1f40995a35209755dcfd8c7547da127f6469fd81e5fba982f6af.js'></script><script src='//static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/motorlatitude/pen/fJGny" />
+
+<link rel='stylesheet' href='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+<style class="cp-pen-styles">body{
+  margin: 0;
+  padding: 0;
+  background: #333;
+}
+
+.box{
+  background: rgba(255,255,255,0.8);
+  border-radius: 3px;
+  box-shadow: 0 4px 0px #222;
+  font-family: Arial;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+}
+
+.box1{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 230px;
+  height: 180px;
+}
+
+.box2{
+  position: absolute;
+  top: 10px;
+  left: 560px;
+  width: 300px;
+  height: 180px;
+}
+
+.box2 .wrapper{
+  overflow: auto; 
+  height: 140px; 
+  border-bottom-left-radius: 2px; 
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  padding: 0px;
+  width: 100%;
+  background: transparent;
+}
+
+.box2 ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.box2 ul li{
+  height: 30px;
+  width: calc(100% - 20px);
+  width: -webkit-calc(100% - 20px);
+  text-align: left;
+  padding: 10px 10px 0 10px;
+  font-size: 13px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.box2 ul li:hover{
+  background: #F3442B;
+  color: #fff;
+}
+
+.box div{
+  width: calc(100% - 20px);
+  width: -webkit-calc(100% - 20px);
+  height: 20px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  background: rgba(255,255,255,0.5);
+  padding: 10px;
+  cursor: move;
+}
+
+.box div span{
+  font-size: 13px;
+  color: #777;
+  font-weight: normal;
+  float: right;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.box1 ul.storage{
+  margin: 0 0 0 5%;
+  padding: 0;
+  list-style: none;
+  background: #555;
+  width: 90%;
+  height: 12px;
+  border-radius: 360px;
+}
+
+.box1 ul.storage li{
+  float: left;
+  height: 12px;
+  cursor: pointer;
+}
+
+.box1 ul.storage li:hover{
+  -webkit-transform: scale(1.2);
+}
+
+.box1 ul.storage li:nth-child(1){
+  width: 10%;
+  background: #F3442B;
+  border-top-left-radius: 360px;
+  border-bottom-left-radius: 360px;
+}
+
+.box1 ul.storage li:nth-child(2){
+  width: 25%;
+  background: #A9CE00;
+}
+
+.box1 ul.storage li:nth-child(3){
+  width: 10%;
+  background: #1EC3FF;
+}
+
+.box1 ul.storage li:nth-child(4){
+  width: 35%;
+  background: #7B78E9;
+}
+
+.box1 ul.key{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100px;
+  list-style: none;
+}
+
+.box1 ul.key li:nth-child(1){
+  font-weight: normal;
+  font-size: 12px;
+  color: #777;
+  float: left;
+  padding-top: 10px;
+  padding-left: calc(5% + 16px);
+  padding-left: -webkit-calc(5% + 16px);
+  text-align: left;
+  text-shadow: 0 1px 0 #eee;
+}
+
+.box1 ul.key li:nth-child(1):after{
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 5%;
+  width: 13px;
+  height: 13px;
+  background: #F3442B;
+  border-radius: 2px;
+}
+
+.box1 ul.key li:nth-child(2){
+  font-weight: normal;
+  font-size: 12px;
+  color: #777;
+  float: left;
+  width: 50%;
+  padding-top: 10px;
+  padding-left: calc(5% + 16px);
+  padding-left: -webkit-calc(5% + 16px);
+  text-align: left;
+  text-shadow: 0 1px 0 #eee;
+}
+
+.box1 ul.key li:nth-child(2):after{
+  content: '';
+  position: absolute;
+  top: 73px;
+  left: 5%;
+  width: 13px;
+  height: 13px;
+  background: #A9CE00;
+  border-radius: 2px;
+}
+
+.box1 ul.key li:nth-child(3){
+  font-weight: normal;
+  font-size: 12px;
+  color: #777;
+  float: left;
+  width: 50%;
+  padding-top: 10px;
+  padding-left: calc(5% + 16px);
+  padding-left: -webkit-calc(5% + 16px);
+  text-align: left;
+  text-shadow: 0 1px 0 #eee;
+}
+
+.box1 ul.key li:nth-child(3):after{
+  content: '';
+  position: absolute;
+  top: 97px;
+  left: 5%;
+  width: 13px;
+  height: 13px;
+  background: #1EC3FF;
+  border-radius: 2px;
+}
+
+.box1 ul.key li:nth-child(4){
+  font-weight: normal;
+  font-size: 12px;
+  color: #777;
+  float: left;
+  width: 50%;
+  padding-top: 10px;
+  padding-left: calc(5% + 16px);
+  padding-left: -webkit-calc(5% + 16px);
+  text-align: left;
+  text-shadow: 0 1px 0 #eee;
+}
+
+.box1 ul.key li:nth-child(4):after{
+  content: '';
+  position: absolute;
+  top: 121px;
+  left: 5%;
+  width: 13px;
+  height: 13px;
+  background: #7B78E9;
+  border-radius: 2px;
+}
+
+.box3{
+  position: absolute;
+  top: 210px;
+  left: 560px;
+  width: 300px;
+  height: 180px;
+}
+
+.box3 .wrapper{
+  overflow: auto; 
+  height: 140px; 
+  border-bottom-left-radius: 2px; 
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  padding: 0px;
+  width: 100%;
+  background: transparent;
+}
+
+.box3 ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.box3 ul li{
+  height: 30px;
+  width: calc(100% - 20px);
+  width: -webkit-calc(100% - 20px);
+  text-align: left;
+  padding: 10px 10px 0 10px;
+  font-size: 13px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.box3 ul li:hover{
+  background: #A9CE00;
+  color: #fff;
+}
+
+.box4{
+  position: absolute;
+  top: 410px;
+  left: 560px;
+  width: 300px;
+  height: 180px;
+}
+
+.box4 .wrapper{
+  overflow: auto; 
+  height: 140px; 
+  border-bottom-left-radius: 2px; 
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  padding: 0px;
+  width: 100%;
+  background: transparent;
+}
+
+.box4 ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.box4 ul li{
+  height: 30px;
+  width: calc(100% - 20px);
+  width: -webkit-calc(100% - 20px);
+  text-align: left;
+  padding: 10px 10px 0 10px;
+  font-size: 13px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.box4 ul li:hover{
+  background: #1EC3FF;
+  color: #fff;
+}
+
+.box5{
+  position: absolute;
+  top: 480px;
+  left: 230px;
+  width: 300px;
+  height: 180px;
+}
+
+.box5 .wrapper{
+  overflow: auto; 
+  height: 140px; 
+  border-bottom-left-radius: 2px; 
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  padding: 0px;
+  width: 100%;
+  background: transparent;
+}
+
+.box5 ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.box5 ul li{
+  height: 30px;
+  width: calc(100% - 20px);
+  width: -webkit-calc(100% - 20px);
+  text-align: left;
+  padding: 10px 10px 0 10px;
+  font-size: 13px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.box5 ul li:hover{
+  background: #7B78E9;
+  color: #fff;
+}</style></head><body>
+<canvas></canvas>
+<div class="draggable_box box box1">
+  <div>My Website</div>
+  <ul class="key">
+    <li>
+      HTML Files
+    </li>
+    <li>
+      JS Files
+    </li>
+    <li>
+      CSS Files
+    </li>
+    <li>
+      Media Files
+    </li>
+  </ul>
+  <br> 
+    <ul class="storage">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  
+  <div class="draggable_box box box2">
+    <div> &nbsp; &nbsp; &nbsp; HTML Files <span>5.4GB</span></div>
+    <div class="wrapper">
+    <ul>
+      <li>
+        Lorem.html
+      </li>
+      <li>
+         Ipsum.html
+      </li>
+      <li>
+        Lorem.html
+      </li>
+      <li>
+         Ipsum.html
+      </li>
+      <li>
+        Lorem.html
+      </li>
+      <li>
+         Ipsum.html
+      </li>
+      <li>
+        Lorem.html
+      </li>
+      <li>
+         Ipsum.html
+      </li>
+    </ul>
+    </div>
+  </div>
+  
+  <div class="draggable_box box box3">
+    <div> &nbsp; &nbsp; &nbsp; JS Files <span>7.2GB</span></div>
+    <div class="wrapper">
+    <ul>
+      <li>
+        Lorem.js
+      </li>
+      <li>
+        ipsum.js
+      </li>
+      <li>
+        dolor.js
+      </li>
+      <li>
+        Lorem.js
+      </li>
+      <li>
+        ipsum.js
+      </li>
+      <li>
+        dolor.js
+      </li>
+      <li>
+        Lorem.js
+      </li>
+      <li>
+        ipsum.js
+      </li>
+      <li>
+        dolor.js
+      </li>
+      <li>
+        Lorem.js
+      </li>
+      <li>
+        ipsum.js
+      </li>
+      <li>
+        dolor.js
+      </li>
+    </ul>
+    </div>
+  </div>
+  
+  <div class="draggable_box box box4">
+    <div> &nbsp; &nbsp; &nbsp; CSS Files <span>3.2GB</span></div>
+    <div class="wrapper">
+    <ul>
+      <li>
+        Lorem.css
+      </li>
+      <li>
+        ipsum.css
+      </li>
+      <li>
+        dolor.css
+      </li>
+      <li>
+        Lorem.css
+      </li>
+      <li>
+        ipsum.css
+      </li>
+      <li>
+        dolor.css
+      </li>
+      <li>
+        Lorem.css
+      </li>
+      <li>
+        ipsum.css
+      </li>
+      <li>
+        dolor.css
+      </li>
+      <li>
+        Lorem.css
+      </li>
+      <li>
+        ipsum.css
+      </li>
+      <li>
+        dolor.css
+      </li>
+    </ul>
+    </div>
+  </div>
+  
+  
+  <div class="draggable_box box box5">
+    <div> &nbsp; &nbsp; &nbsp; Media Files <span>9.2GB</span></div>
+    <div class="wrapper">
+    <ul>
+      <li>
+        Lorem.css
+      </li>
+      <li>
+        ipsum.css
+      </li>
+      <li>
+        dolor.css
+      </li>
+      <li>
+        Lorem.css
+      </li>
+      <li>
+        ipsum.css
+      </li>
+      <li>
+        dolor.css
+      </li>
+      <li>
+        Lorem.css
+      </li>
+      <li>
+        ipsum.css
+      </li>
+      <li>
+        dolor.css
+      </li>
+      <li>
+        Lorem.css
+      </li>
+      <li>
+        ipsum.css
+      </li>
+      <li>
+        dolor.css
+      </li>
+    </ul>
+    </div>
+  </div>
+  
+<script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js'></script><script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script src='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script >$(document).ready(function () {
+  $(".draggable_box").draggable({ handle: 'div', drag: function () {reset();} });
+  reset();
+});
+
+var canvas = document.getElementsByTagName("canvas")[0];
+var ctx = canvas.getContext("2d");
+
+var w = window.innerWidth,h = window.outerHeight;
+canvas.width = w;
+canvas.height = h;
+
+function reset() {
+  ctx.fillStyle = "#333";
+  ctx.fillRect(0, 0, w, h);
+  drawscene();
+}
+
+function drawscene() {
+  ctx.beginPath();
+  ctx.moveTo(Math.floor($(".box1").css("left").replace("px", "")) + 230, Math.floor($(".box1").css("top").replace("px", "")) + 50);
+  ctx.lineTo(Math.floor($(".box1").css("left").replace("px", "")) + 250, Math.floor($(".box1").css("top").replace("px", "")) + 50);
+  ctx.lineTo(Math.floor($(".box2").css("left").replace("px", "")) - 20, Math.floor($(".box2").css("top").replace("px", "")) + 50);
+  ctx.lineTo(Math.floor($(".box2").css("left").replace("px", "")), Math.floor($(".box2").css("top").replace("px", "")) + 50);
+  ctx.strokeStyle = "#F3442B";
+  ctx.lineWidth = 10;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(Math.floor($(".box1").css("left").replace("px", "")) + 230, Math.floor($(".box1").css("top").replace("px", "")) + 70);
+  ctx.lineTo(Math.floor($(".box1").css("left").replace("px", "")) + 242, Math.floor($(".box1").css("top").replace("px", "")) + 70);
+  ctx.lineTo(Math.floor($(".box3").css("left").replace("px", "")) - 20, Math.floor($(".box3").css("top").replace("px", "")) + 50);
+  ctx.lineTo(Math.floor($(".box3").css("left").replace("px", "")), Math.floor($(".box3").css("top").replace("px", "")) + 50);
+  ctx.strokeStyle = "#A9CE00";
+  ctx.lineWidth = 10;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(Math.floor($(".box1").css("left").replace("px", "")) + 230, Math.floor($(".box1").css("top").replace("px", "")) + 100);
+  ctx.lineTo(Math.floor($(".box1").css("left").replace("px", "")) + 240, Math.floor($(".box1").css("top").replace("px", "")) + 100);
+  ctx.lineTo(Math.floor($(".box4").css("left").replace("px", "")) - 20, Math.floor($(".box4").css("top").replace("px", "")) + 50);
+  ctx.lineTo(Math.floor($(".box4").css("left").replace("px", "")), Math.floor($(".box4").css("top").replace("px", "")) + 50);
+  ctx.strokeStyle = "#1EC3FF";
+  ctx.lineWidth = 10;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(Math.floor($(".box1").css("left").replace("px", "")) + 230, Math.floor($(".box1").css("top").replace("px", "")) + 130);
+  ctx.lineTo(Math.floor($(".box1").css("left").replace("px", "")) + 240, Math.floor($(".box1").css("top").replace("px", "")) + 130);
+  ctx.lineTo(Math.floor($(".box5").css("left").replace("px", "")) - 20, Math.floor($(".box5").css("top").replace("px", "")) + 50);
+  ctx.lineTo(Math.floor($(".box5").css("left").replace("px", "")), Math.floor($(".box5").css("top").replace("px", "")) + 50);
+  ctx.strokeStyle = "#7B78E9";
+  ctx.lineWidth = 10;
+  ctx.stroke();
+}
+//# sourceURL=pen.js
+</script>
+</body></html>
